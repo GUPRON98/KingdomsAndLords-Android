@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Nokia-MIDlet-No-Exit: true
+MIDlet-Vendor: [ANDREW-LVIV] / Gameloft SA
+MIDlet-Version: 1.0.1
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-1: Kingdoms & Lords, /icon.png, GloftKLMP
+Created-By: 1.6.0_26 (Sun Microsystems Inc.)
+Nokia-MIDlet-Category: Game
+MIDlet-Icon: /icon.png
+MIDlet-Name: Kingdoms & Lords
+MIDlet-Permissions: javax.wireless.messaging.sms.send,javax.microedition.io.Connector.sms,javax.microedition.io.Connector.http
+MicroEdition-Profile: MIDP-2.0
+MIDlet-Delete-Confirm: More free games on andrew-lviv.net
+MIDlet-Info-URL: http://andrew-lviv.net
