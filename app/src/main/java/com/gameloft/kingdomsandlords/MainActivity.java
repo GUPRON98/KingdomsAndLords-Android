@@ -197,9 +197,29 @@ public class MainActivity extends Activity {
     private void addGameResource(int prop, int amount, String toastMsg) {
         try {
             Class<?> aClass = Class.forName("a");
+            if (prop != 3) {
+                try {
+                    Method mAg = aClass.getDeclaredMethod("ag", int.class);
+                    mAg.setAccessible(true);
+                    mAg.invoke(null, prop);
+
+                    Field fLimit = aClass.getDeclaredField("aX");
+                    fLimit.setAccessible(true);
+                    int[] limits = (int[]) fLimit.get(null);
+                    if (limits != null && prop < limits.length && limits[prop] < 999999) {
+                        limits[prop] = 999999;
+                    }
+                    Field fAQ = aClass.getDeclaredField("aQ");
+                    fAQ.setAccessible(true);
+                    fAQ.setBoolean(null, false);
+                    Field fAR = aClass.getDeclaredField("aR");
+                    fAR.setAccessible(true);
+                    fAR.setBoolean(null, false);
+                } catch (Throwable ignored) {}
+            }
             Method mAdd = aClass.getDeclaredMethod("a", int.class, int.class, boolean.class);
             mAdd.setAccessible(true);
-            mAdd.invoke(null, prop, amount, false);
+            mAdd.invoke(null, prop, amount, true);
             if (toastMsg != null) {
                 Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show();
             }
@@ -414,11 +434,12 @@ public class MainActivity extends Activity {
             float btnH = 34f * density;
             float margin = 12f * density;
 
-            cheatRect.set(margin, margin, margin + btnW, margin + btnH);
+            float cheatTop = viewH - margin - btnH;
+            cheatRect.set(margin, cheatTop, margin + btnW, viewH - margin);
             opsiRect.set(viewW - margin - btnW, margin, viewW - margin, margin + btnH);
 
             cheatBgPaint.setShader(new LinearGradient(
-                    0, margin, 0, margin + btnH,
+                    0, cheatTop, 0, viewH - margin,
                     Color.argb(190, 185, 130, 20), Color.argb(190, 100, 65, 5),
                     Shader.TileMode.CLAMP));
             opsiBgPaint.setShader(new LinearGradient(
