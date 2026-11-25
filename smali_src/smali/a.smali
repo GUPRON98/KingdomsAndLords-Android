@@ -178544,3 +178544,42 @@
 
     return-void
 .end method
+
+.method public static cheatAddResource(II)V
+    .locals 3
+
+    invoke-static {p0}, La;->ag(I)V
+
+    const/4 v0, 0x3
+
+    if-eq p0, v0, :cond_0
+
+    sget-object v0, La;->aX:[I
+
+    if-eqz v0, :cond_0
+
+    array-length v1, v0
+
+    if-ge p0, v1, :cond_0
+
+    aget v1, v0, p0
+
+    const v2, 0xf423f
+
+    if-ge v1, v2, :cond_0
+
+    aput v2, v0, p0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    sput-boolean v0, La;->aQ:Z
+
+    sput-boolean v0, La;->aR:Z
+
+    const/4 v0, 0x1
+
+    invoke-static {p0, p1, v0}, La;->a(IIZ)Z
+
+    return-void
+.end method

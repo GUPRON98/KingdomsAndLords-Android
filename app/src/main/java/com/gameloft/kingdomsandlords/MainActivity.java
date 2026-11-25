@@ -197,33 +197,14 @@ public class MainActivity extends Activity {
     private void addGameResource(int prop, int amount, String toastMsg) {
         try {
             Class<?> aClass = Class.forName("a");
-            if (prop != 3) {
-                try {
-                    Method mAg = aClass.getDeclaredMethod("ag", int.class);
-                    mAg.setAccessible(true);
-                    mAg.invoke(null, prop);
-
-                    Field fLimit = aClass.getDeclaredField("aX");
-                    fLimit.setAccessible(true);
-                    int[] limits = (int[]) fLimit.get(null);
-                    if (limits != null && prop < limits.length && limits[prop] < 999999) {
-                        limits[prop] = 999999;
-                    }
-                    Field fAQ = aClass.getDeclaredField("aQ");
-                    fAQ.setAccessible(true);
-                    fAQ.setBoolean(null, false);
-                    Field fAR = aClass.getDeclaredField("aR");
-                    fAR.setAccessible(true);
-                    fAR.setBoolean(null, false);
-                } catch (Throwable ignored) {}
-            }
-            Method mAdd = aClass.getDeclaredMethod("a", int.class, int.class, boolean.class);
+            Method mAdd = aClass.getDeclaredMethod("cheatAddResource", int.class, int.class);
             mAdd.setAccessible(true);
-            mAdd.invoke(null, prop, amount, true);
+            mAdd.invoke(null, prop, amount);
             if (toastMsg != null) {
                 Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show();
             }
         } catch (Throwable t) {
+            Log.e(TAG, "cheatAddResource error", t);
             if (toastMsg != null) {
                 Toast.makeText(this, "Masuk ke kingdom dulu!", Toast.LENGTH_SHORT).show();
             }
